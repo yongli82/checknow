@@ -119,8 +119,8 @@ LANGUAGE_CODE = 'zh-hans'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = False
-USE_L10N = False
+USE_I18N = True
+USE_L10N = True
 
 # Supported languages
 LANGUAGES = (
@@ -156,7 +156,7 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 DATABASES = {
     "default": {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.",
+        "ENGINE": "django.db.backends.mysql",
         # DB name or path to database file if using sqlite3.
         "NAME": "",
         # Not used with sqlite3.

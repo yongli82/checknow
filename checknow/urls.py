@@ -6,6 +6,7 @@ from django.contrib import admin
 
 from mezzanine.core.views import direct_to_template
 from mezzanine.conf import settings
+import views
 
 
 admin.autodiscover()
@@ -25,7 +26,8 @@ if settings.USE_MODELTRANSLATION:
         url('^i18n/$', 'django.views.i18n.set_language', name='set_language'),
     )
 
-urlpatterns += patterns('',
+urlpatterns += patterns(
+    '',
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
 
@@ -62,8 +64,9 @@ urlpatterns += patterns('',
     # page tree in the admin if it was installed.
 
     # url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
-                        
-                        
+
+    url(r"^frontend/$", views.FrontendIndex.as_view(), name="front-end-index"),
+    url(r"^backend/$", views.BackendIndex.as_view(), name="back-end-index"),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/docs/', include('rest_framework_swagger.urls', namespace='rest_framework_swagger')),
     url(r'^api/$', direct_to_template, {"template": "api_index.html"}, name='APIHome'),
