@@ -7,13 +7,14 @@ from rest_framework.urlpatterns import format_suffix_patterns
 import api
 from django.conf.urls import url, include
 
-
-
-# urlpatterns = [
-#     url(r'^page/userlist/$', page_views.UserListView.as_view(), name="user-list-page"),
-# ]
+from django.conf.urls import url
+from views import UserControl
 
 
 urlpatterns = [
-    url(r'^', include(api.router.urls)),
+        url(r'^usercontrol/(?P<slug>\w+)$', UserControl.as_view()),
+]
+
+urlpatterns += [
+    url(r'^api/account/', include(api.router.urls)),
 ]

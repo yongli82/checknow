@@ -65,12 +65,13 @@ urlpatterns += patterns(
 
     # url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
 
+    url(r"^login/$", views.LoginView.as_view(), name="login-page"),
     url(r"^frontend/$", views.FrontendIndex.as_view(), name="front-end-index"),
     url(r"^backend/$", views.BackendIndex.as_view(), name="back-end-index"),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/docs/', include('rest_framework_swagger.urls', namespace='rest_framework_swagger')),
     url(r'^api/$', direct_to_template, {"template": "api_index.html"}, name='APIHome'),
-    url(r'^api/account/', include('m_accounts.urls', namespace='m_account_api')),
+    url(r'', include('m_accounts.urls', namespace='m_account_api')),
     
 
     # MEZZANINE'S URLS

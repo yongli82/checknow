@@ -6,7 +6,8 @@ from decimal import Decimal
 from django.db import models
 from django.contrib.auth import get_user_model
 
-User = get_user_model()
+import m_accounts.models
+User = m_accounts.models.User
 
 class AlarmProductStatus(object):
     STATUS_INIT = 1
@@ -162,8 +163,8 @@ class AlarmTrigger(models.Model):
     """
     闹铃触发设置
     """
-    user = models.ForeignKey(User, related_name='alarm_balance_user', verbose_name="用户", help_text="用户")
-    product = models.ForeignKey(AlarmProduct, related_name='alarm_order_product', verbose_name="闹铃产品", help_text="闹铃产品")
+    user = models.ForeignKey(User, related_name='alarm_trigger_user', verbose_name="用户", help_text="用户")
+    product = models.ForeignKey(AlarmProduct, related_name='alarm_trigger_product', verbose_name="闹铃产品", help_text="闹铃产品")
     schedule_type = models.IntegerField("日程类型", help_text="日程类型", choices=AlarmTriggerScheduleType.CHOICES.items(),
                                  default=AlarmTriggerScheduleType.DAILY_LOOP_SCHEDULE)
     schedule_time = models.TimeField("闹铃时间")

@@ -18,5 +18,6 @@ class FrontendIndex(TemplateView):
 
 class BackendIndex(TemplateView):
     template_name = "backend/index.html"
-    
-    
+
+class LoginView(TemplateView):
+    template_name = "login.html"
